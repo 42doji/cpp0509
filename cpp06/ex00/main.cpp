@@ -10,5 +10,8 @@ int main()
     ScalarConverter::convert("42.0f");
     std::cout << "\n";
     ScalarConverter::convert("a");
+    std::cout << "\n";
+    ScalarConverter::convert("321.99f");
+    std::cout << "\n";
     return 0;
 }
