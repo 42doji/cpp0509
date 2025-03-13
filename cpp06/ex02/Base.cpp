@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: doji <doji@student.42gyeongsan.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 18:24:58 by doji              #+#    #+#             */
+/*   Updated: 2025/03/13 18:53:56 by doji             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Base.hpp"
 #include <iostream>
 #include <cstdlib>
@@ -5,7 +17,6 @@
 
 Base* generate(void) 
 {
-    std::srand(static_cast<unsigned>(std::time(0)));
     int choice = std::rand() % 3;
     if (choice == 0) return new A();
     if (choice == 1) return new B();
@@ -14,14 +25,15 @@ Base* generate(void)
 
 void identify(Base* p) 
 {
-    if (dynamic_cast<A*>(p)) 
-    {
+    if (!p) {
+        std::cout << "Error: Null pointer provided\n";
+        return;
+    }
+    if (dynamic_cast<A*>(p)) {
         std::cout << "A\n";
-    } else if (dynamic_cast<B*>(p)) 
-    {
+    } else if (dynamic_cast<B*>(p)) {
         std::cout << "B\n";
-    } else if (dynamic_cast<C*>(p)) 
-    {
+    } else if (dynamic_cast<C*>(p)) {
         std::cout << "C\n";
     }
 }
